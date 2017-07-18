@@ -1,0 +1,32 @@
+<%= form_for(trash_wheel) do |f| %>
+  <% if trash_wheel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trash_wheel.errors.count, "error") %> prohibited this trash_wheel from being saved:</h2>
+
+      <ul>
+      <% trash_wheel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :eyes %>
+    <%= f.check_box :eyes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trashy %>
+    <%= f.check_box :trashy %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

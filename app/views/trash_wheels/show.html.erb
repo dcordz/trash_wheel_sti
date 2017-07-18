@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @trash_wheel.title %>
+</p>
+
+<p>
+  <strong>Eyes:</strong>
+  <%= @trash_wheel.eyes %>
+</p>
+
+<p>
+  <strong>Trashy:</strong>
+  <%= @trash_wheel.trashy %>
+</p>
+
+<%= link_to 'Edit', edit_trash_wheel_path(@trash_wheel) %> |
+<%= link_to 'Back', trash_wheels_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trash Wheels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Eyes</th>
+      <th>Trashy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trash_wheels.each do |trash_wheel| %>
+      <tr>
+        <td><%= trash_wheel.title %></td>
+        <td><%= trash_wheel.eyes %></td>
+        <td><%= trash_wheel.trashy %></td>
+        <td><%= link_to 'Show', trash_wheel %></td>
+        <td><%= link_to 'Edit', edit_trash_wheel_path(trash_wheel) %></td>
+        <td><%= link_to 'Destroy', trash_wheel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trash Wheel', new_trash_wheel_path %>

@@ -1,0 +1,2 @@
+module TrashWheelsHelper
+end

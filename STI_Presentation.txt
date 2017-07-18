@@ -1,0 +1,37 @@
+Rails STI
+
+How and When to Use STI in Rails - https://eewang.github.io/blog/2013/03/12/how-and-when-to-use-single-table-inheritance-in-rails/
+
+• Inheritance - Models / Tables inherit from a base Model / Table
+• Share attributes, but with different behavior
+• Very few to no null columns, if two+ column(s) will always be null for a type, maybe STI isn't for you.
+• Separation of types - dynamically changing type is not recommended
+
+Issues?
+• Sending the problem to the front-end, adding type as a param to get the correct record
+• Overriding as_json to include type attribute when rendering json
+  https://stackoverflow.com/questions/8945846/including-type-attribute-in-json-respond-with-rails-3-1
+  https://github.com/rails/rails/issues/3508
+
+Sandi Metz on Inheritance
+• "What is a class if not a type?"
+• "This the exact problem that inheritance solves; that of highly related types that share common behavior but differ along some dimension."
+• "Subclasses are specializations of their superclasses."
+• A subclass should be everything a superclass is, plus more
+• "Easier to promote code to a superclass than to demote it down to a subclass"
+
+Learn Ruby the Hard Way
+"Use inheritance only when there are clearly related reusable pieces of code that fit under a single common concept"
+
+How to implement:
+1 - rails g migration add_type_to_model type:string (default: self.inheritance_column = :type)
+2 - create typed classes, class NewType1 < Base; class NewType2 < Base
+3 - Done.
+4 - Add scopes, scope :type1, -> { where(type: 'Type1') } to BaseType
+    Now we can do BaseType.type1
+
+Resources:
+http://api.rubyonrails.org/classes/ActiveRecord/Inheritance.html
+http://eewang.github.io/blog/2013/03/12/how-and-when-to-use-single-table-inheritance-in-rails/
+https://devblast.com/b/single-table-inheritance-with-rails-4-part-1/
+http://siawyoung.com/coding/ruby/rails/single-table-inheritance-in-rails-4.html
